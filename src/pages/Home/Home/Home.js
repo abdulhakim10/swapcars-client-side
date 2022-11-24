@@ -1,9 +1,8 @@
-import React from 'react';
 import AllCategories from '../Category/AllCategories';
 
 const Home = () => {
     return (
-        <div>           
+        <div>         
             <div class="flex justify-center p-8 m-12">
                 <div class="flex flex-col justify-center">
 

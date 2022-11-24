@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
+        const {user, logOut} = useContext(AuthContext);
+        console.log(user)
+
+        const handleLogOut = async() => {
+               await logOut(); 
+        }
     return (
         <div>
           <div class="flex justify-center ">
@@ -13,20 +20,28 @@ const Navbar = () => {
          <ul class="hidden md:flex items-center text-[18px] font-semibold pr-10">
              <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link
                      to="/">Home</Link></li>
-             <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link to="#">About
-                     Us</Link></li>
+             <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link to="#">{user?.displayName}</Link></li>
              <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link to="#">Our
                      Services</Link></li>
              <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link
                      to="#">Portfolio</Link></li>
              <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link
                      to="#">Contact</Link></li>
-             <li
+            {
+                user?.uid ?
+                <li onClick={handleLogOut}
+                 class="text-blue-600 hover:text-white hover:bg-blue-600 mx-4 my-2 border-2 border-blue-600 px-3 py-1 rounded-lg ">
+                 LogOut</li>
+                :
+                <>
+                 <li
                  class="text-blue-600 hover:text-white hover:bg-blue-600 mx-4 my-2 border-2 border-blue-600 px-3 py-1 rounded-lg ">
                  <Link to="/login">LogIn</Link></li>
              <li
                  class="text-white bg-blue-600 px-3 py-1 rounded-lg mx-4 my-1 hover:bg-white hover:text-blue-600 hover:border-2 hover:border-blue-600">
                  <Link to="/signup">SignUp</Link></li>
+                </>
+            }
          </ul> <button class="block p-3 mx-10 md:hidden hover:bg-gray-200 rounded-xl group">
              <div class="w-5 my-[3px] h-[3px] bg-gray-600 mb-[2px]"></div>
              <div class="w-5 my-[3px] h-[3px] bg-gray-600 mb-[2px]"></div>

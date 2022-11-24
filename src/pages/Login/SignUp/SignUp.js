@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     // const [data, setData] = useState("");
+    const {signUp, user} = useContext(AuthContext);
 
     const imageHostKey = process.env.REACT_APP_imagebb_key;
 
     const handleSignup = async(data) => {
-        console.log(data)
+        const email = data.email;
+        const password = data.password;
+        const name = data.name;
+        // console.log(name)
+        
         
         const image = data.image[0];
         const formData = new FormData();
@@ -20,10 +26,12 @@ const SignUp = () => {
             body: formData
         })
         .then(res => res.json())
-        .then(data => {
-            console.log(data)
+        .then(img => {
+            // console.log(name,)
+            const newImage = img.data.url;
+            return signUp(email, password, name, newImage);
         })
-        
+        console.log(user)
     }
     return (
         <div className='flex justify-center'>
@@ -32,8 +40,8 @@ const SignUp = () => {
             <form className='w-full mx-auto' onSubmit={handleSubmit(handleSignup)}>
 
                 <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Your Name</span>
+                    <label className="label1">
+                        <span className="label1-text">Your Name</span>
                     </label>
                     <input {...register("name",{
                         required: 'Name is required'
@@ -42,8 +50,8 @@ const SignUp = () => {
                 {errors.name && <p className="text-red-600">{errors.name?.message}</p>}
 
                 <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Image</span>
+                    <label className="label2">
+                        <span className="label2-text">Image</span>
                     </label>
                     <input {...register("image",{
                         required: 'Image is required'
