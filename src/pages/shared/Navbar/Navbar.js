@@ -8,7 +8,7 @@ const Navbar = () => {
  <div class="self-center top-0 w-full max-w-7xl ">
      <div class="flex justify-between items-center text-gray-700">
          <div class="mx-2 my-4 ">
-             <ion-icon name="logo-pwa" class="text-5xl text-blue-600 hover:text-stone-600">Assignment-12</ion-icon>
+             <ion-icon name="logo-pwa" class="text-5xl text-blue-600 hover:text-stone-600">Swapcars</ion-icon>
          </div>
          <ul class="hidden md:flex items-center text-[18px] font-semibold pr-10">
              <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link
