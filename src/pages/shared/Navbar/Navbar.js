@@ -12,7 +12,7 @@ const Navbar = () => {
          </div>
          <ul class="hidden md:flex items-center text-[18px] font-semibold pr-10">
              <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link
-                     to="#">Home</Link></li>
+                     to="/">Home</Link></li>
              <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link to="#">About
                      Us</Link></li>
              <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link to="#">Our
@@ -22,11 +22,11 @@ const Navbar = () => {
              <li class="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link
                      to="#">Contact</Link></li>
              <li
-                 class="text-blue-600 hover:text-white hover:bg-blue-600 mx-4 my-1 border-2 border-blue-600 px-2 rounded-2xl ">
-                 <Link to="#">LogIn</Link></li>
+                 class="text-blue-600 hover:text-white hover:bg-blue-600 mx-4 my-2 border-2 border-blue-600 px-3 py-1 rounded-lg ">
+                 <Link to="/login">LogIn</Link></li>
              <li
-                 class="text-white bg-blue-600 px-2 rounded-2xl mx-4 my-1 hover:bg-white hover:text-blue-600 hover:border-2 hover:border-blue-600">
-                 <Link to="#">SignUp</Link></li>
+                 class="text-white bg-blue-600 px-3 py-1 rounded-lg mx-4 my-1 hover:bg-white hover:text-blue-600 hover:border-2 hover:border-blue-600">
+                 <Link to="/signup">SignUp</Link></li>
          </ul> <button class="block p-3 mx-10 md:hidden hover:bg-gray-200 rounded-xl group">
              <div class="w-5 my-[3px] h-[3px] bg-gray-600 mb-[2px]"></div>
              <div class="w-5 my-[3px] h-[3px] bg-gray-600 mb-[2px]"></div>
