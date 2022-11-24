@@ -1,0 +1,19 @@
+[
+    {
+        "category_id": "01",
+        "category_name": "luxury cars",
+        "title": "Red Maruti",
+        "location": "Dhaka",
+        "used": "1 year",
+        "original_price": "1000",
+        "resale_price": "3000",
+        "seller": {
+          "name": "Rayhan Rodes",
+          "phone": "013*******",
+          "posted_time": "2022-08-24 17:27:34",
+          "img": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+        },
+        "image": "https://i.ibb.co/M23fhxm/unsplash-Eh-Tc-C9s-YXsw.png",
+        "description": ""
+      }
+]
