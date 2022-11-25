@@ -37,6 +37,7 @@ const BuyModal = ({category}) => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            
         })
         form.reset();
     }
@@ -75,7 +76,7 @@ const BuyModal = ({category}) => {
   <label className="label">
     <span className="label-text">Phone Number</span>
   </label>
-  <input type="number" name='phone' required min="11"  className="input input-bordered w-full max-w-xs" />
+  <input type="text" name='phone' required min="11"  className="input input-bordered w-full max-w-xs" />
 </div>
     <div className="form-control w-full max-w-xs">
   <label className="label">
