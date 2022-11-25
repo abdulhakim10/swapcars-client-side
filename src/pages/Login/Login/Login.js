@@ -7,6 +7,7 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     // const [data, setData] = useState("");
 
+    // login handler
     const handleLogin = async(data) => {
         const email = data.email;
         const password = data.password;

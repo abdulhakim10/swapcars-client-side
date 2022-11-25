@@ -10,6 +10,7 @@ const SignUp = () => {
 
     const imageHostKey = process.env.REACT_APP_imagebb_key;
 
+    // signup handler with imgbb
     const handleSignup = async(data) => {
         const email = data.email;
         const password = data.password;
@@ -29,6 +30,7 @@ const SignUp = () => {
         .then(img => {
             // console.log(name,)
             const newImage = img.data.url;
+            // signup
             return signUp(email, password, name, newImage);
         })
         console.log(user)
