@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Login = () => {
     const {user, logIn, googleSignIn} = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
-    // const [data, setData] = useState("");
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     // login handler
     const handleLogin = async(data) => {
@@ -13,10 +17,12 @@ const Login = () => {
         const password = data.password;
 
         await logIn(email, password);
+        navigate(from, {replace: true});
     }
 
     const googleLogin = async() => {
         await await googleSignIn();
+        navigate(from, {replace: true});
     }
     return (
         <div className='flex justify-center'>
