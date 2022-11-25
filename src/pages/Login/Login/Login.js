@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Login = () => {
-    const {user, logIn} = useContext(AuthContext);
+    const {user, logIn, googleSignIn} = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     // const [data, setData] = useState("");
 
@@ -13,6 +13,10 @@ const Login = () => {
         const password = data.password;
 
         await logIn(email, password);
+    }
+
+    const googleLogin = async() => {
+        await await googleSignIn();
     }
     return (
         <div className='flex justify-center'>
@@ -39,7 +43,7 @@ const Login = () => {
                    <div className='w-full max-w-xs'>
                    <input type="submit" className='btn btn-outline w-full max-w-xs mt-6' value='Login' />
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full max-w-xs mt-4'>CONTINUE WITH GOOGLE</button>
+                <button onClick={googleLogin} className='btn btn-outline w-full max-w-xs mt-4'>CONTINUE WITH GOOGLE</button>
                    </div>
             </form>
            </div>

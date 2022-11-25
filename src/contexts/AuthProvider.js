@@ -5,12 +5,17 @@ import {
     updateProfile, 
     signOut,
     onAuthStateChanged,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    GoogleAuthProvider
 } from 'firebase/auth';
 import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
 const auth = getAuth(app)
+
+// google provider
+const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
@@ -34,6 +39,12 @@ const AuthProvider = ({children}) => {
     }
 
 
+    // sigIn/up with google
+    const googleSignIn = async() => {
+        await signInWithPopup(auth, googleProvider);
+    }
+
+
     // log out
     const logOut = async() => {
         await signOut(auth)
@@ -53,6 +64,7 @@ const AuthProvider = ({children}) => {
         user,
         signUp,
         logIn,
+        googleSignIn,
         logOut,
     }
     return (
