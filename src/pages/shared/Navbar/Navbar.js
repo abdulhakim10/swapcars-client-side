@@ -19,7 +19,7 @@ const Navbar = () => {
                 <div className="self-center top-0 w-full max-w-7xl ">
                     <div className="flex justify-between items-center text-gray-700">
                         <div className="mx-2 my-4 ">
-                            <ion-icon name="logo-pwa" className="text-5xl text-blue-600 hover:text-stone-600">Swapcars</ion-icon>
+                            <h2 name="logo-pwa" className="text-5xl text-blue-600 hover:text-stone-600">Swapcars</h2>
                         </div>
                         <ul className="hidden md:flex items-center text-[18px] font-semibold pr-10">
                             <li className="text-stone-600 hover:text-blue-600 hover:font-bold font-medium mx-4 my-1"><Link

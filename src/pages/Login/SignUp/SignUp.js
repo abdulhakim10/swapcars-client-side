@@ -30,7 +30,7 @@ const SignUp = () => {
         .then(img => {
             // console.log(name,)
             const newImage = img.data.url;
-            // signup
+            // signup with email-password and name-image
             return signUp(email, password, name, newImage);
         })
         console.log(user)
@@ -78,7 +78,7 @@ const SignUp = () => {
                 </div>
                 
                    <div className='w-full max-w-xs'>
-                   <input type="submit" className='btn btn-outline w-full max-w-xs mt-6' value='Login' />
+                   <input type="submit" className='btn btn-outline w-full max-w-xs mt-6' value='Sign Up' />
                 <div className="divider">OR</div>
                 <button className='btn btn-outline w-full max-w-xs mt-4'>CONTINUE WITH GOOGLE</button>
                    </div>
