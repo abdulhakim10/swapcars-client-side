@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 
-const BuyModal = ({category}) => {
-    const {title, resale_price} = category;
+const BuyModal = ({modalInfo}) => {
+    const {title, resale_price} = modalInfo;
     const {user} = useContext(AuthContext);
 
 

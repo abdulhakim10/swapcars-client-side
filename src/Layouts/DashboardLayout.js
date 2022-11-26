@@ -1,11 +1,12 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Navbar from '../pages/shared/Navbar/Navbar';
+import { Link, Outlet } from 'react-router-dom';
+import Header from '../pages/shared/Navbar/Header';
+
 
 const DashboardLayout = () => {
     return (
         <div>
-            <Navbar></Navbar>
+            <Header></Header>
             
             <div className="drawer drawer-end drawer-mobile bg-purple-100">
   <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
@@ -16,7 +17,7 @@ const DashboardLayout = () => {
     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label> 
     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
       
-      <li><a>Sidebar Item 1</a></li>
+      <li ><Link to='/dashboard'>My Orders</Link></li>
       <li><a>Sidebar Item 2</a></li>
     </ul>
   

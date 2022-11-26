@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Login = () => {
-    const {user, logIn, googleSignIn} = useContext(AuthContext);
+    const {logIn, googleSignIn} = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,9 +20,31 @@ const Login = () => {
         navigate(from, {replace: true});
     }
 
-    const googleLogin = async() => {
-        await await googleSignIn();
-        navigate(from, {replace: true});
+    const googleLogin = () => {
+         googleSignIn()
+         .then(result => {
+            const data = result.user
+            // send to db
+            const user = {
+                name: data.displayName,
+                email: data.email,
+                image: data.photoURL,
+                role : "Buyer"
+            }
+    
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                navigate(from, {replace: true});
+            })
+        })
     }
     return (
         <div className='flex justify-center'>
@@ -45,7 +67,7 @@ const Login = () => {
                     </label>
                     <input {...register("password")} placeholder="Password" type="password" className="input input-bordered w-full max-w-xs" />
                 </div>
-                
+                <p>New to Swapcars? go to <Link to='/signup'><u className='text-blue-600'>SignUp</u></Link></p>
                    <div className='w-full max-w-xs'>
                    <input type="submit" className='btn btn-outline w-full max-w-xs mt-6' value='Login' />
                 <div className="divider">OR</div>

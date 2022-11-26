@@ -1,7 +1,7 @@
 import React from 'react';
 import BuyModal from '../../BuyModal/BuyModal';
 
-const CategoryCard = ({ category }) => {
+const CategoryCard = ({ category, handleModal }) => {
     // console.log(category)
     const {title, image, original_price, resale_price, seller, location} = category;
     return (
@@ -36,7 +36,7 @@ const CategoryCard = ({ category }) => {
                                     </div>
                                         <div class="flex m-1 gap-4">
                                             <button className='btn btn-sm btn-outline'>add</button>
-                                            <label htmlFor="buy-modal" className="btn btn-sm btn-outline">Buy</label>
+                                            <label onClick={() =>handleModal(category)} htmlFor="buy-modal" className="btn btn-sm btn-outline">Buy</label>
                                             
                                         </div>
                                 </div>
@@ -49,9 +49,9 @@ const CategoryCard = ({ category }) => {
             <script src="https://use.fontawesome.com/03f8a0ebd4.js"></script>
             <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
             <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-            <BuyModal 
+            {/* <BuyModal 
             category={category}
-            ></BuyModal>
+            ></BuyModal> */}
         </div>
     );
 };

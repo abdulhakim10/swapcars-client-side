@@ -42,9 +42,9 @@ const AuthProvider = ({children}) => {
 
 
     // sigIn/up with google
-    const googleSignIn = async() => {
+    const googleSignIn = () => {
         setLoading(true);
-        await signInWithPopup(auth, googleProvider);
+        return signInWithPopup(auth, googleProvider);
     }
 
 

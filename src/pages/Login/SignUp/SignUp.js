@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext} from 'react';
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     // const [data, setData] = useState("");
-    const { signUp, user } = useContext(AuthContext);
-
+    const { signUp, googleSignIn } = useContext(AuthContext);
+    // const [role, setRole] = useState('buyer');
+    // console.log(role)
     const imageHostKey = process.env.REACT_APP_imagebb_key;
 
     // signup handler with imgbb
@@ -16,10 +18,8 @@ const SignUp = () => {
         const password = data.password;
         const name = data.name;
         const role = data.role;
-        console.log(role)
 
-
-        // imgbb
+        // file send to imgBB
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -44,31 +44,57 @@ const SignUp = () => {
 
             const newImage = img.data.url;
             // signup with email-password and name-image
-            await signUp(email, password, name, newImage);
+        await signUp(email, password, name, newImage);
+        
+        // send to db
+        const user = {
+            name,
+            email,
+            image: newImage,
+            role,
+        }
 
-
-            // send to db
-            const user = {
-                name,
-                email,
-                newImage,
-                role
-            }
-
-            fetch('http://localhost:5000/users', {
-                method: 'POST',
-                headers: {
-                    'content-type' : 'application/json'
-                },
-                body: JSON.stringify(user)
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-       
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
     }
 
+
+    // google log in
+    const googleLogin = () => {
+    googleSignIn()
+    .then(result => {
+        const data = result.user
+        // send to db
+        const user = {
+            name: data.displayName,
+            email: data.email,
+            image: data.photoURL,
+            role : "Buyer"
+        }
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+    })
+        
+    }
 
 
 
@@ -120,15 +146,15 @@ return (
                     <select
                         {...register('role')}
                         className="select select-bordered w-full max-w-xs">
-                        <option disabled selected>Buyer</option>
+                        <option selected>Buyer</option>
                         <option>Seller</option>
                     </select>
                 </div>
-
+                <p>Have an account go to <Link to='/login'><u className='text-blue-600'>Login</u></Link></p>
                 <div className='w-full max-w-xs'>
                     <input type="submit" className='btn btn-outline w-full max-w-xs mt-6' value='Sign Up' />
                     <div className="divider">OR</div>
-                    <button className='btn btn-outline w-full max-w-xs mt-4'>CONTINUE WITH GOOGLE</button>
+                    <button onClick={googleLogin} className='btn btn-outline w-full max-w-xs mt-4'>CONTINUE WITH GOOGLE</button>
                 </div>
             </form>
         </div>
