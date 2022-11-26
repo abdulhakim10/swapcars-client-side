@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useToken from '../../../hooks/useToken';
 
 const Login = () => {
     const {logIn, googleSignIn} = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [loginUserEmail, setLoginUserEmail] = useState("");
+    const [token] = useToken(loginUserEmail);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -17,12 +20,15 @@ const Login = () => {
         const password = data.password;
 
         await logIn(email, password);
+        setLoginUserEmail(email)
         navigate(from, {replace: true});
     }
 
-    const googleLogin = () => {
-         googleSignIn()
-         .then(result => {
+
+    // google login
+     const googleLogin = () => {
+        googleSignIn()
+        .then(result => {
             const data = result.user
             // send to db
             const user = {
@@ -41,11 +47,12 @@ const Login = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                navigate(from, {replace: true});
+                const email = user.email;
+                setLoginUserEmail(email);
             })
         })
-    }
+            
+        }
     return (
         <div className='flex justify-center'>
            <div className='w-96 p-7'>

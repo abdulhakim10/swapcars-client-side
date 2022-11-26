@@ -1,16 +1,21 @@
-import React, { useContext} from 'react';
+import React, { useContext, useState} from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useToken from '../../../hooks/useToken';
 
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     // const [data, setData] = useState("");
     const { signUp, googleSignIn } = useContext(AuthContext);
-    // const [role, setRole] = useState('buyer');
-    // console.log(role)
+    const [signupUserEmail, setSignupUserEmail] = useState("");
+    const [token] = useToken(signupUserEmail);
+    const navigate = useNavigate();
+
     const imageHostKey = process.env.REACT_APP_imagebb_key;
+
+
 
     // signup handler with imgbb
     const handleSignup = async (data) => {
@@ -41,10 +46,12 @@ const SignUp = () => {
                 body: formData
             });
             const img = await res.json();
-
             const newImage = img.data.url;
+
+
             // signup with email-password and name-image
         await signUp(email, password, name, newImage);
+        
         
         // send to db
         const user = {
@@ -64,6 +71,9 @@ const SignUp = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            const email = user.email
+            setSignupUserEmail(email);
+            // getToken(email);
         })
     }
 
@@ -90,13 +100,22 @@ const SignUp = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            const email = user.email;
+            setSignupUserEmail(email);
         })
     })
         
     }
 
-
+    // const getToken = email => {
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         if(data.accessToken){
+    //             localStorage.setItem('accessToken', data.accessToken)
+    //         }
+    //     })
+    // }
 
 return (
     <div className='flex justify-center'>
