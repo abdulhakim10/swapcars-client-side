@@ -19,9 +19,9 @@ const MyBookings = () => {
         }
     })
 
-    if(isLoading){
-        return <h2 className="text-3xl font-bold">Loading...</h2>
-    }
+    // if(isLoading){
+    //     return <h2 className="text-3xl font-bold">Loading...</h2>
+    // }
     
     return (
         <div className='m-12'>
