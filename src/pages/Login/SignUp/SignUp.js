@@ -16,13 +16,16 @@ const SignUp = () => {
     const imageHostKey = process.env.REACT_APP_imagebb_key;
 
 
+    if(token){
+        navigate('/');
+    }
 
     // signup handler with imgbb
     const handleSignup = async (data) => {
         const email = data.email;
         const password = data.password;
         const name = data.name;
-        const role = data.role;
+        const type = data.type;
 
         // file send to imgBB
         const image = data.image[0];
@@ -58,7 +61,7 @@ const SignUp = () => {
             name,
             email,
             image: newImage,
-            role,
+            type,
         }
 
         fetch('http://localhost:5000/users', {
@@ -78,7 +81,7 @@ const SignUp = () => {
     }
 
 
-    // google log in
+    // google log in handler
     const googleLogin = () => {
     googleSignIn()
     .then(result => {
@@ -88,7 +91,7 @@ const SignUp = () => {
             name: data.displayName,
             email: data.email,
             image: data.photoURL,
-            role : "Buyer"
+            type : "Buyer"
         }
 
         fetch('http://localhost:5000/users', {
@@ -161,9 +164,9 @@ return (
 
 
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"><span className="label-text">Role</span></label>
+                    <label className="label"><span className="label-text">Type of User</span></label>
                     <select
-                        {...register('role')}
+                        {...register('type')}
                         className="select select-bordered w-full max-w-xs">
                         <option selected>Buyer</option>
                         <option>Seller</option>

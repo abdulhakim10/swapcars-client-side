@@ -14,18 +14,21 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
 
+    if(token){
+        navigate(from, {replace: true});
+    }
+
     // login handler
     const handleLogin = async(data) => {
         const email = data.email;
         const password = data.password;
 
         await logIn(email, password);
-        setLoginUserEmail(email)
-        navigate(from, {replace: true});
+        setLoginUserEmail(email);
     }
 
 
-    // google login
+    // google login handler
      const googleLogin = () => {
         googleSignIn()
         .then(result => {
@@ -35,7 +38,7 @@ const Login = () => {
                 name: data.displayName,
                 email: data.email,
                 image: data.photoURL,
-                role : "Buyer"
+                type : "Buyer"
             }
     
             fetch('http://localhost:5000/users', {
@@ -51,7 +54,7 @@ const Login = () => {
                 setLoginUserEmail(email);
             })
         })
-            
+          
         }
     return (
         <div className='flex justify-center'>
