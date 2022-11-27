@@ -5,7 +5,7 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyBookings = () => {
     const {user} = useContext(AuthContext);
-    const {data: myBookings, isLoading} = useQuery({
+    const {data: myBookings = [], isLoading} = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async() => {
             const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
@@ -25,7 +25,7 @@ const MyBookings = () => {
     
     return (
         <div className='m-12'>
-        {myBookings.length > 0 ?
+        {myBookings?.length > 0 ?
         <>
         <h2 className="text-3xl mb-5 text-center font-semibold">My Bookings: {myBookings.length}</h2>
         <div className="overflow-x-auto">
