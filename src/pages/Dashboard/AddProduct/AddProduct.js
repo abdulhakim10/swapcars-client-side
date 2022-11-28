@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import date from 'date-and-time';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
@@ -9,7 +10,8 @@ const AddProduct = () => {
     const imageHostKey = process.env.REACT_APP_imagebb_key;
 
     const handleAddProduct = async(data) => {
-
+        const now = new Date();
+        const newTime = date.format(now, 'YYYY/MM/DD HH:mm:ss');
         
         // imgBB
         const image = data.photo[0];
@@ -38,7 +40,7 @@ const AddProduct = () => {
                 name: data.name,
                 phone: data.phone,
                 img: data.image,
-                posted_time: data.time
+                posted_time: newTime
             },
             image: newImage,
             condition: data.condition
@@ -153,16 +155,6 @@ const AddProduct = () => {
                         <input {...register('used', {
                             required: 'Use Duration is required'
                         })} type="text" placeholder="Enter use duration" className="input input-bordered input-sm w-full " />
-                        {errors.name && <p className="text-red-600">{errors.name?.message}</p>}
-                    </div>
-
-                    <div>
-                        <label className="label">
-                            <span className="label-text">Posted Time</span>
-                        </label>
-                        <input {...register('time', {
-                            required: 'Time is required'
-                        })} type="text" placeholder="Enter posted time" className="input input-bordered input-sm w-full " />
                         {errors.name && <p className="text-red-600">{errors.name?.message}</p>}
                     </div>
 

@@ -39,6 +39,7 @@ const MyBookings = () => {
                         <th>Item Name</th>
                         <th>Price</th>
                         <th>Payment</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,7 +55,7 @@ const MyBookings = () => {
                                     booking.price && !booking.paid && <Link
                                         to={`/dashboard/payment/${booking._id}`}
                                     >
-                                        <button className='btn btn-primary btn-sm'>Pay</button>
+                                        <button className='btn btn-outline btn-xs'>Pay</button>
                                     </Link>
                                 }
                                 {
@@ -63,6 +64,7 @@ const MyBookings = () => {
                                     >Paid</span>
                                 }
                             </td>
+                            <td><button className='btn btn-error btn-xs'>Delete</button></td>
                         </tr>)
                     }
                 </tbody>

@@ -1,3 +1,4 @@
+import Advertise from '../Advertise/Advertise';
 import AllCategories from '../Category/AllCategories';
 
 const Home = () => {
@@ -29,7 +30,7 @@ const Home = () => {
 
                             </div>
                             <div class="md:w-20 w-10 h-60 md:h-96  overflow-hidden rounded-xl">
-                                <img src="https://i.pinimg.com/200x/ca/4c/2a/ca4c2adb19721ea7cf0efb673e35663e.jpg" class="h-full w-full" alt="" />
+                                <img src="https://images.pexels.com/photos/9328727/pexels-photo-9328727.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="h-full w-full" alt="" />
                             </div>
                         </div>
 
@@ -38,7 +39,13 @@ const Home = () => {
             </div>
             <script src="https://cdn.tailwindcss.com"></script>
             <script src="https://use.fontawesome.com/03f8a0ebd4.js"></script>
+            <div>
+                <Advertise></Advertise>
+            </div>
+        <div>
         <AllCategories></AllCategories>
+        </div>
+        
         </div>
     );
 };

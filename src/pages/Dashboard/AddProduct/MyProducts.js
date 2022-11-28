@@ -26,6 +26,24 @@ const MyProducts = () => {
             refetch();
         })
     }
+
+
+     // product delete handler
+     const handleProductDelete = id => {
+        fetch(`http://localhost:5000/cars/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            refetch();
+        })
+    }
+
+
     return (
         <div className='m-12 '>
             <h2 className="text-3xl font-semibold text-green-800 mb-4 text-center">MyProducts: {myCars?.length}</h2>
@@ -45,8 +63,8 @@ const MyProducts = () => {
                 </thead>
                 <tbody>
                     {
-                        myCars?.map((myCar, idx) => <>{
-                            myCar.item_status !== 'advertise' && 
+                        myCars?.map((myCar, idx) => 
+                             
                             <tr key={myCar._id}>
                             <th>{idx + 1}</th>
                             <td>{myCar.title}</td>
@@ -54,12 +72,12 @@ const MyProducts = () => {
                             <td>{myCar.condition}</td>
                             <td>{myCar.resale_price}</td>
                             <td>
-                            <button onClick={() => handleAdvertise(myCar._id)} className='btn btn-success btn-xs'>Add</button>
+                            {myCar.item_status !== 'advertise' && <button onClick={() => handleAdvertise(myCar._id)} className='btn btn-success btn-xs'>Add</button>}
                             </td>
                             <td>
-                            <button className='btn btn-error btn-xs'>Delete</button>
+                            <button onClick={() => handleProductDelete(myCar._id)} className='btn btn-error btn-xs'>Delete</button>
                             </td>
-                        </tr>}</>)
+                        </tr>)
                     }
                 </tbody>
             </table>
