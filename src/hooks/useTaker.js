@@ -9,6 +9,7 @@ const useTaker = email => {
             fetch(`http://localhost:5000/users/taker/${email}`)
         .then(res => res.json())
         .then(data => {
+            console.log(data);
             setIsTaker(data.isTaker);
         })
         }

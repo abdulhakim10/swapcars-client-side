@@ -44,12 +44,12 @@ const SignUp = () => {
         //         return signUp(email, password, name, newImage);
         //     })
         
-            const res = await fetch(url, {
-                method: 'POST',
-                body: formData
-            });
-            const img = await res.json();
-            const newImage = img.data.url;
+        const res = await fetch(url, {
+            method: 'POST',
+            body: formData
+        });
+        const img = await res.json();
+        const newImage = img.data.url;
 
 
             // signup with email-password and name-image
@@ -121,8 +121,8 @@ const SignUp = () => {
     // }
 
 return (
-    <div className='flex justify-center'>
-        <div className='w-96 p-7'>
+    <div className='flex justify-center bg-green-100'>
+        <div className='w-96 p-10 border-2  border-green-800 rounded-lg m-8'>
             <h2 className="text-3xl font-bold text-center">Sign Up</h2>
             <form className='w-full mx-auto' onSubmit={handleSubmit(handleSignup)}>
 

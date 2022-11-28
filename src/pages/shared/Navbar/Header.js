@@ -14,10 +14,10 @@ const Header = () => {
   }
 
   const menuItems = <>
-    <li className='text-lg rounded-md hover:text-blue-600 hover:bg-gray-200 px-3 py-1'><Link to='/'> Home</Link></li>
-    <li className='text-lg rounded-md hover:text-blue-600 hover:bg-gray-200 px-3 py-1'><Link to='/dashboard'>Dashboard</Link></li>
-    <li className='text-lg rounded-md hover:text-blue-600 hover:bg-gray-200 px-3 py-1'><Link to='/blog'>Blog</Link></li>
-    <li className='text-lg rounded-md hover:text-blue-600 hover:bg-gray-200 px-3 py-1'><Link to='/addservice'>Add Service</Link></li>
+    <li className='text-lg rounded-md hover:text-green-600 hover:bg-gray-200 px-3 py-1'><Link to='/'> Home</Link></li>
+    <li className='text-lg rounded-md hover:text-green-600 hover:bg-gray-200 px-3 py-1'><Link to='/dashboard'>Dashboard</Link></li>
+    <li className='text-lg rounded-md hover:text-green-600 hover:bg-gray-200 px-3 py-1'><Link to='/blog'>Blog</Link></li>
+    <li className='text-lg rounded-md hover:text-green-600 hover:bg-gray-200 px-3 py-1'><Link to='/addservice'>Add Service</Link></li>
     <>{
       user?.uid &&
     

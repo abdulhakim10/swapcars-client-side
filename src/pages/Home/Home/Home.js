@@ -2,14 +2,14 @@ import AllCategories from '../Category/AllCategories';
 
 const Home = () => {
     return (
-        <div>         
-            <div class="flex justify-center p-8 m-12">
+        <div className='bg-green-100 p-6'>         
+            <div class="flex justify-center p-6 m-6  ">
                 <div class="flex flex-col justify-center">
 
                     <div class="flex flex-col lg:flex-row max-w-7xl justify-center items-center p-2 space-y-3 w-full">
                         <div class="flex flex-col md:items-start items-center justify-between  space-y-3 px-8">
                             <div class="text-5xl md:text-7xl font-bold ">
-                                Hero Animation </div>
+                                Swapcars </div>
                             <div class="text-lg uppercase md:text-3xl   ">
                                 Interactive Components</div>
                             <div class="text-xl md:text-3xl   ">
