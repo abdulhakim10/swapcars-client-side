@@ -7,7 +7,9 @@ import AllBuyers from "../../pages/Dashboard/AllUser/AllBuyers/AllBuyers";
 import AllSellers from "../../pages/Dashboard/AllUser/AllSellers/AllSellers";
 import AllUser from "../../pages/Dashboard/AllUser/AllUser";
 import Dashboard from "../../pages/Dashboard/Dashboard";
-import MyBookings from "../../pages/Dashboard/MyBookings/MyOrders";
+import MyBookings from "../../pages/Dashboard/MyBookings/MyBookings";
+import MyWishlist from "../../pages/Dashboard/MyBookings/MyWishlist";
+
 import Category from "../../pages/Home/Category/Category";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login/Login";
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/mybooking',
                 element: <MyBookings></MyBookings>
+            },
+            {
+                path: '/dashboard/wishlists',
+                element: <MyWishlist></MyWishlist>
             },
             {
                 path: '/dashboard/allusers',

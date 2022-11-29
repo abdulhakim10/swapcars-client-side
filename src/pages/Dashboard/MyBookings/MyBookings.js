@@ -27,8 +27,8 @@ const MyBookings = () => {
         <div className='m-12'>
         {myBookings?.length > 0 ?
         <>
-        <h2 className="text-3xl mb-5 text-center font-semibold">My Bookings: {myBookings.length}</h2>
-        <div className="overflow-x-auto">
+        <h2 className="text-3xl mb-5 text-green-800  text-center font-semibold">My Bookings: {myBookings.length}</h2>
+        <div className="overflow-x-auto border-2 border-green-800 rounded-lg">
             <table className="table w-full">
 
                 <thead>

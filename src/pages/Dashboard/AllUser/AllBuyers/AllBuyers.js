@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const AllBuyers = () => {
 
@@ -29,10 +30,13 @@ const AllBuyers = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            toast.success('Make Admin successfully');
             refetch();
         })
     }
 
+
+    // delete buyer
     const handleDeleteBuyer = buyer => {
         fetch(`http://localhost:5000/users/${buyer._id}`, {
             method: 'DELETE',
@@ -43,14 +47,15 @@ const AllBuyers = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                toast.success('Deleted successfully');
                 refetch();
             })
     }
     return (
         <div className='m-12'>
-      <h2 className="text-3xl font-semibold text-center mb-4">All Buyers: {buyers?.length}</h2>
+      <h2 className="text-3xl font-semibold text-green-800 text-center mb-5">All Buyers: {buyers?.length}</h2>
 
-      <div className="overflow-x-auto w-full">
+      <div className="overflow-x-auto w-full border-2 border-green-800 rounded-lg">
         <table className="table w-full">
 
           <thead>

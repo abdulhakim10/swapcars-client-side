@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import useToken from '../../../hooks/useToken';
@@ -25,6 +26,7 @@ const Login = () => {
 
         await logIn(email, password);
         setLoginUserEmail(email);
+        toast.success('Successfully logged in')
     }
 
 
@@ -77,7 +79,7 @@ const Login = () => {
                     </label>
                     <input {...register("password")} placeholder="Password" type="password" className="input input-bordered w-full max-w-xs" />
                 </div>
-                <p>New to Swapcars? go to <Link to='/signup'><u className='text-blue-600'>SignUp</u></Link></p>
+                <p className='mt-4'>New to Swapcars? Please <Link to='/signup'><span className='text-green-600 font-semibold'>Create New Account</span></Link></p>
                    <div className='w-full max-w-xs'>
                    <input type="submit" className='btn btn-outline w-full max-w-xs mt-6' value='Login' />
                 <div className="divider">OR</div>
