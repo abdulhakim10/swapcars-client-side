@@ -6,7 +6,11 @@ const AllSellers = () => {
   const { data: sellers = [], refetch } = useQuery({
     queryKey: ['allsellers'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/allsellers');
+      const res = await fetch('http://localhost:5000/allsellers', {
+        headers: {
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
+        }
+      });
       const data = await res.json();
       return data;
     }
@@ -16,28 +20,45 @@ const AllSellers = () => {
   // make admin handler
   const handleMakeAdmin = id => {
     fetch(`http://localhost:5000/users/admin/${id}`, {
-        method: 'PUT',
-        headers: {
-            authorization: `bearer ${localStorage.getItem('accessToken')}`
-        }
+      method: 'PUT',
+      headers: {
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        refetch();
+      })
+  }
+
+
+  // // verify seller
+  const handleVerifySeller = email => {
+    fetch(`http://localhost:5000/vrifiedseller?email=${email}`,{
+      method: 'PUT',
+      headers: {
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
+      }
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data)
-        refetch();
+      console.log(data);
+      refetch();
     })
-}
+  }
+
   const handleDeleteSeller = seller => {
     fetch(`http://localhost:5000/users/${seller._id}`, {
       method: 'DELETE',
       headers: {
-          authorization: `bearer ${localStorage.getItem('accessToken')}`
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
       }
-  })
+    })
       .then(res => res.json())
       .then(data => {
-          console.log(data)
-          refetch();
+        console.log(data)
+        refetch();
       })
   }
   return (
@@ -54,6 +75,7 @@ const AllSellers = () => {
               <th>Email</th>
               <th>Role</th>
               <th>Admin</th>
+              <th>Verify</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -80,12 +102,19 @@ const AllSellers = () => {
                 <td>
                   <span className="badge badge-ghost font-semibold badge-lg">{seller.type}</span>
                 </td>
-                <th>
+                <td>
                   {seller.role !== 'admin' && <button onClick={() => handleMakeAdmin(seller._id)} className="btn btn-success btn-xs">Make Admin</button>}
-                </th>
-                <th>
+                </td>
+                <td>
+                  {seller.status !== 'verified' ?
+                    <button onClick={() => handleVerifySeller(seller.email)} className="btn btn-success btn-xs">Verify</button>
+                    :
+                    <p className='badge badge-success'>Verified</p>
+                  }
+                </td>
+                <td>
                   <button onClick={() => handleDeleteSeller(seller)} className="btn btn-error btn-xs">Delete</button>
-                </th>
+                </td>
               </tr>)
             }
           </tbody>

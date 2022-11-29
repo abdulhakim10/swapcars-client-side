@@ -69,7 +69,7 @@ const AddProduct = () => {
             <div >
                 <form
                     onSubmit={handleSubmit(handleAddProduct)}
-                    className='grid lg:grid-cols-2 grid-cols-1 gap-2'>
+                    className='grid lg:grid-cols-2 grid-cols-1 gap-4'>
 
                     <div>
                         <label className="label">
@@ -80,7 +80,7 @@ const AddProduct = () => {
                         })}
 
                             disabled
-                            type="text" placeholder="Enter Product Name" className="input input-bordered input-sm w-full " />
+                            type="text" placeholder="Enter Product Name" className="input input-bordered w-full " />
                     </div>
 
                     <div>
@@ -92,7 +92,7 @@ const AddProduct = () => {
                         })}
                             disabled
                             type="text"
-                            className="input input-bordered input-sm w-full " />
+                            className="input input-bordered w-full " />
 
                     </div>
 
@@ -104,7 +104,7 @@ const AddProduct = () => {
                             value: `${user?.photoURL}`
                         })} 
                         disabled
-                        type="text" placeholder="Type here" className="input input-bordered input-sm w-full " />
+                        type="text" placeholder="Type here" className="input input-bordered w-full " />
                         {errors.name && <p className="text-red-600">{errors.name?.message}</p>}
                     </div>
 
@@ -114,7 +114,7 @@ const AddProduct = () => {
                         </label>
                         <input {...register('phone', {
                             required: 'Contact Number is required'
-                        })} type="text" placeholder="Enter your contact number" className="input input-bordered input-sm w-full " />
+                        })} type="text" placeholder="Enter your contact number" className="input input-bordered w-full " />
                         {errors.name && <p className="text-red-600">{errors.name?.message}</p>}
                     </div>
 
@@ -124,7 +124,7 @@ const AddProduct = () => {
                         </label>
                         <input {...register('title', {
                             required: 'Item Name is required'
-                        })} type="text" placeholder="Enter item name" className="input input-bordered input-sm w-full " />
+                        })} type="text" placeholder="Enter item name" className="input input-bordered w-full " />
                         {errors.name && <p className="text-red-600">{errors.name?.message}</p>}
                     </div>
 
@@ -134,7 +134,7 @@ const AddProduct = () => {
                         </label>
                         <input {...register('original', {
                             required: 'Original Price is required'
-                        })} type="text" placeholder="Enter item's original price" className="input input-bordered input-sm w-full " />
+                        })} type="text" placeholder="Enter item's original price" className="input input-bordered  w-full " />
                         {errors.name && <p className="text-red-600">{errors.name?.message}</p>}
                     </div>
 
@@ -144,7 +144,7 @@ const AddProduct = () => {
                         </label>
                         <input {...register('resale', {
                             required: 'Resale Price is required'
-                        })} type="text" placeholder="Enter resale price" className="input input-bordered input-sm w-full " />
+                        })} type="text" placeholder="Enter resale price" className="input input-bordered w-full " />
                         {errors.name && <p className="text-red-600">{errors.name?.message}</p>}
                     </div>
 
@@ -154,7 +154,7 @@ const AddProduct = () => {
                         </label>
                         <input {...register('used', {
                             required: 'Use Duration is required'
-                        })} type="text" placeholder="Enter use duration" className="input input-bordered input-sm w-full " />
+                        })} type="text" placeholder="Enter use duration" className="input input-bordered w-full " />
                         {errors.name && <p className="text-red-600">{errors.name?.message}</p>}
                     </div>
 
@@ -164,7 +164,7 @@ const AddProduct = () => {
                         </label>
                         <input {...register('location', {
                             required: 'Location is required'
-                        })} type="text" placeholder="Enter location" className="input input-bordered input-sm w-full " />
+                        })} type="text" placeholder="Enter location" className="input input-bordered w-full " />
                         {errors.name && <p className="text-red-600">{errors.name?.message}</p>}
                     </div>
 

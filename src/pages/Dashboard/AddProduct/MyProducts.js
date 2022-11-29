@@ -13,8 +13,23 @@ const MyProducts = () => {
         }
     })
 
+    // make advertise
     const handleAdvertise = id => {
         fetch(`http://localhost:5000/cars/advertise/${id}`,{
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            refetch();
+        })
+    }
+    // make advertise
+    const handleRemoveAdvertise = id => {
+        fetch(`http://localhost:5000/cars/removeadvertise/${id}`,{
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -72,7 +87,10 @@ const MyProducts = () => {
                             <td>{myCar.condition}</td>
                             <td>{myCar.resale_price}</td>
                             <td>
-                            {myCar.item_status !== 'advertise' && <button onClick={() => handleAdvertise(myCar._id)} className='btn btn-success btn-xs'>Add</button>}
+                            {myCar.item_status !== 'advertise' ? 
+                            <button onClick={() => handleAdvertise(myCar._id)} className='btn btn-success btn-xs'>Add</button>:
+                            <button onClick={() => handleRemoveAdvertise(myCar._id)} className='btn btn-ghost btn-xs'>Remove</button>
+                        }
                             </td>
                             <td>
                             <button onClick={() => handleProductDelete(myCar._id)} className='btn btn-error btn-xs'>Delete</button>
