@@ -1,5 +1,6 @@
 import React, { useContext, useState} from 'react';
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import useToken from '../../../hooks/useToken';
@@ -54,7 +55,8 @@ const SignUp = () => {
 
             // signup with email-password and name-image
         await signUp(email, password, name, newImage);
-        
+        toast.success('User create successfully');
+
         
         // send to db
         const user = {
@@ -84,7 +86,9 @@ const SignUp = () => {
     // google log in handler
     const googleLogin = () => {
     googleSignIn()
+    
     .then(result => {
+        toast.success('Successfully logged in');
         const data = result.user
         // send to db
         const user = {
@@ -121,7 +125,7 @@ const SignUp = () => {
     // }
 
 return (
-    <div className='flex justify-center bg-green-100'>
+    <div className='flex justify-center bg-purple-100'>
         <div className='w-96 p-10 border-2  border-green-800 rounded-lg m-8'>
             <h2 className="text-3xl font-bold text-center">Sign Up</h2>
             <form className='w-full mx-auto' onSubmit={handleSubmit(handleSignup)}>
@@ -172,7 +176,7 @@ return (
                         <option>Seller</option>
                     </select>
                 </div>
-                <p>Have an account go to <Link to='/login'><u className='text-blue-600'>Login</u></Link></p>
+                <p className='mt-4'>Have an account go to <Link to='/login'><span className='text-green-600 font-semibold'>Login</span></Link></p>
                 <div className='w-full max-w-xs'>
                     <input type="submit" className='btn btn-outline w-full max-w-xs mt-6' value='Sign Up' />
                     <div className="divider">OR</div>

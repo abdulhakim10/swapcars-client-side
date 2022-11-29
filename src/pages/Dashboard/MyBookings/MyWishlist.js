@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyWishlist = () => {
     const {user} = useContext(AuthContext);
-    const {data : wishLists = []} = useQuery({
+    const {data : wishLists = [], refetch} = useQuery({
         queryKey: [],
         queryFn: async() => {
             const res = await fetch(`http://localhost:5000/wishlist?email=${user?.email}`);
@@ -13,6 +14,24 @@ const MyWishlist = () => {
             return data;
         }
     })
+
+     // delete buyer
+     const handleDeleteWishlist = id => {
+        fetch(`http://localhost:5000/wishlist/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.acknowledged === true){
+                    toast.success('Deleted successfully');
+                    refetch();
+                }
+            })
+    }
     return (
         <div className='m-12'>
             {wishLists?.length > 0 ?
@@ -37,7 +56,7 @@ const MyWishlist = () => {
                             <td>{wList.title}</td>
                             <td>{wList.price}</td>
                             <td>{wList.location}</td>
-                            <td><button className='btn btn-error btn-xs'>Delete</button></td>
+                            <td><button onClick={() => handleDeleteWishlist(wList._id)} className='btn btn-error btn-xs'>Delete</button></td>
                         </tr>)
                     }
                 </tbody>

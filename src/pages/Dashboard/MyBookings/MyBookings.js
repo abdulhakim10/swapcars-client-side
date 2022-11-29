@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import { IoTrashBin } from 'react-icons/fa';
 
 const MyBookings = () => {
     const {user} = useContext(AuthContext);
-    const {data: myBookings = [], isLoading} = useQuery({
+    const {data: myBookings = [], refetch} = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async() => {
             const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
@@ -18,6 +20,25 @@ const MyBookings = () => {
            return data
         }
     })
+
+
+    // delete buyer
+    const handleDeleteBooking = id => {
+        fetch(`http://localhost:5000/bookings/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.acknowledged === true){
+                  toast.success('Deleted successfully');
+                  refetch();
+              }
+            })
+    }
 
     // if(isLoading){
     //     return <h2 className="text-3xl font-bold">Loading...</h2>
@@ -64,7 +85,7 @@ const MyBookings = () => {
                                     >Paid</span>
                                 }
                             </td>
-                            <td><button className='btn btn-error btn-xs'>Delete</button></td>
+                            <td><button onClick={() => handleDeleteBooking(booking._id)} className='btn btn-error btn-xs'>Delete</button></td>
                         </tr>)
                     }
                 </tbody>

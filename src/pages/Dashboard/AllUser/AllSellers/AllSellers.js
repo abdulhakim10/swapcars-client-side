@@ -29,8 +29,10 @@ const AllSellers = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        toast.success('Make Admin successfully');
-        refetch();
+        if(data.modifiedCount > 0){
+          toast.success('Make Admin successfully');
+          refetch();
+        }
       })
   }
 
@@ -46,8 +48,10 @@ const AllSellers = () => {
     .then(res => res.json())
     .then(data => {
       console.log(data);
-      toast.success('Verified');
-      refetch();
+      if(data.result.modifiedCount > 0){
+        toast.success('Verified');
+        refetch();
+      }
     })
   }
 
@@ -62,8 +66,10 @@ const AllSellers = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        toast.success('Deleted successfully');
-        refetch();
+        if(data.acknowledged === true){
+          toast.success('Deleted successfully');
+          refetch();
+      }
       })
   }
   return (
