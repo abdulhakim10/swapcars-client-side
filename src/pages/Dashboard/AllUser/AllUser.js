@@ -6,7 +6,7 @@ const AllUser = () => {
     const { data: users, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://swapcars-assignment12-server.vercel.app/users');
             const data = await res.json();
             return data;
         }
@@ -15,7 +15,7 @@ const AllUser = () => {
 
     // make admin handler
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://swapcars-assignment12-server.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -30,7 +30,7 @@ const AllUser = () => {
 
     // delete handler
     const handleDeleteUser = user => {
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`https://swapcars-assignment12-server.vercel.app/users/${user._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

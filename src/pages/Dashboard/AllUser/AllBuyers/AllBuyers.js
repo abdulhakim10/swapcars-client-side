@@ -9,7 +9,7 @@ const AllBuyers = () => {
     const {data: buyers = [], refetch} = useQuery({
         queryKey: ['allbuyers'],
         queryFn: async() =>{
-            const res = await fetch('http://localhost:5000/allbuyers', {
+            const res = await fetch('https://swapcars-assignment12-server.vercel.app/allbuyers', {
               headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
               }
@@ -23,7 +23,7 @@ const AllBuyers = () => {
     
     // make admin handler
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://swapcars-assignment12-server.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -42,7 +42,7 @@ const AllBuyers = () => {
 
     // delete buyer
     const handleDeleteBuyer = id => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://swapcars-assignment12-server.vercel.app/users/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

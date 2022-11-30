@@ -7,7 +7,7 @@ const AllCategories = () => {
     const { data: categories, isLoading } = useQuery({
         queryKey: [],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categories');
+            const res = await fetch('https://swapcars-assignment12-server.vercel.app/categories');
             const data = res.json();
             return data;
         }

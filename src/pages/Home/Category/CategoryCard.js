@@ -5,10 +5,12 @@ import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
 import { MdLocationPin, MdVerifiedUser } from 'react-icons/md';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
+
 const CategoryCard = ({ category, handleModal }) => {
     const {user} = useContext(AuthContext);
     // console.log(category)
     const { title, image, original_price, resale_price, seller, location, _id, wish, condition, status } = category;
+    
 
     const handleWishList = (uMail, ctg) => {
         const email = uMail;
@@ -24,7 +26,7 @@ const CategoryCard = ({ category, handleModal }) => {
             location: wLocation,
             image: wImg
         }
-        fetch('http://localhost:5000/wishlist', {
+        fetch('https://swapcars-assignment12-server.vercel.app/wishlist', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -43,7 +45,7 @@ const CategoryCard = ({ category, handleModal }) => {
 
     // remove wish list
     // const handleRemoveWishList = id => {
-    //     fetch(`http://localhost:5000/cars/removewishlist/${id}`, {
+    //     fetch(`https://swapcars-assignment12-server.vercel.app/cars/removewishlist/${id}`, {
     //         method: 'PUT',
     //         headers: {
     //             authorization: `bearer ${localStorage.getItem('accessToken')}`

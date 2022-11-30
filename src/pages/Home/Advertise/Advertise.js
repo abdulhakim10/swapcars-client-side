@@ -6,7 +6,7 @@ const Advertise = () => {
     const { data: advertisedItems = [] } = useQuery({
         queryKey: ['advertised'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/advertised');
+            const res = await fetch('https://swapcars-assignment12-server.vercel.app/advertised');
             const data = await res.json();
             return data;
 

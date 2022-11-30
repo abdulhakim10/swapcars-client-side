@@ -7,7 +7,7 @@ const MyProducts = () => {
     const {data: myCars = [], refetch } = useQuery({
         queryKey: [],
         queryFn: async() => {
-            const res = await fetch(`http://localhost:5000/sellercar?email=${user.email}`);
+            const res = await fetch(`https://swapcars-assignment12-server.vercel.app/sellercar?email=${user.email}`);
             const data = await res.json();
             return data;
         }
@@ -15,7 +15,7 @@ const MyProducts = () => {
 
     // make advertise
     const handleAdvertise = id => {
-        fetch(`http://localhost:5000/cars/advertise/${id}`,{
+        fetch(`https://swapcars-assignment12-server.vercel.app/cars/advertise/${id}`,{
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -29,7 +29,7 @@ const MyProducts = () => {
     }
     // make advertise
     const handleRemoveAdvertise = id => {
-        fetch(`http://localhost:5000/cars/removeadvertise/${id}`,{
+        fetch(`https://swapcars-assignment12-server.vercel.app/cars/removeadvertise/${id}`,{
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -45,7 +45,7 @@ const MyProducts = () => {
 
      // product delete handler
      const handleProductDelete = id => {
-        fetch(`http://localhost:5000/cars/${id}`, {
+        fetch(`https://swapcars-assignment12-server.vercel.app/cars/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

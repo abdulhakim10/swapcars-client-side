@@ -9,7 +9,7 @@ const AllSellers = () => {
   const { data: sellers = [], refetch } = useQuery({
     queryKey: ['allsellers'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/allsellers', {
+      const res = await fetch('https://swapcars-assignment12-server.vercel.app/allsellers', {
         headers: {
           authorization: `bearer ${localStorage.getItem('accessToken')}`
         }
@@ -22,7 +22,7 @@ const AllSellers = () => {
 
   // make admin handler
   const handleMakeAdmin = id => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://swapcars-assignment12-server.vercel.app/users/admin/${id}`, {
       method: 'PUT',
       headers: {
         authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -41,7 +41,7 @@ const AllSellers = () => {
 
   // // verify seller
   const handleVerifySeller = email => {
-    fetch(`http://localhost:5000/vrifiedseller?email=${email}`,{
+    fetch(`https://swapcars-assignment12-server.vercel.app/vrifiedseller?email=${email}`,{
       method: 'PUT',
       headers: {
         authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -59,7 +59,7 @@ const AllSellers = () => {
 
   // delete seller
   const handleDeleteSeller = seller => {
-    fetch(`http://localhost:5000/users/${seller._id}`, {
+    fetch(`https://swapcars-assignment12-server.vercel.app/users/${seller._id}`, {
       method: 'DELETE',
       headers: {
         authorization: `bearer ${localStorage.getItem('accessToken')}`

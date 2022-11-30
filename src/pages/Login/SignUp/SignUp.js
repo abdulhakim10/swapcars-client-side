@@ -66,7 +66,7 @@ const SignUp = () => {
             type,
         }
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://swapcars-assignment12-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -98,7 +98,7 @@ const SignUp = () => {
             type : "Buyer"
         }
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://swapcars-assignment12-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -115,7 +115,7 @@ const SignUp = () => {
     }
 
     // const getToken = email => {
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     fetch(`https://swapcars-assignment12-server.vercel.app/jwt?email=${email}`)
     //     .then(res => res.json())
     //     .then(data => {
     //         if(data.accessToken){
@@ -176,13 +176,13 @@ return (
                         <option>Seller</option>
                     </select>
                 </div>
-                <p className='mt-4'>Have an account go to <Link to='/login'><span className='text-green-600 font-semibold'>Login</span></Link></p>
                 <div className='w-full max-w-xs'>
                     <input type="submit" className='btn btn-outline w-full max-w-xs mt-6' value='Sign Up' />
-                    <div className="divider">OR</div>
-                    <button onClick={googleLogin} className='btn btn-outline w-full max-w-xs mt-4'>CONTINUE WITH GOOGLE</button>
                 </div>
             </form>
+            <p className='mt-4'>Have an account go to <Link to='/login'><span className='text-green-600 font-semibold'>Login</span></Link></p>
+                    <div className="divider">OR</div>
+                    <button onClick={googleLogin} className='btn btn-outline w-full max-w-xs mt-4'>CONTINUE WITH GOOGLE</button>
         </div>
     </div>
 );

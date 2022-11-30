@@ -27,7 +27,7 @@ const BuyModal = ({modalInfo}) => {
 
         
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://swapcars-assignment12-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

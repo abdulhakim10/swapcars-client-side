@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import date from 'date-and-time';
+import toast from 'react-hot-toast';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const imageHostKey = process.env.REACT_APP_imagebb_key;
 
@@ -47,7 +48,7 @@ const AddProduct = () => {
             
         }
 
-        fetch('http://localhost:5000/cars', {
+        fetch('https://swapcars-assignment12-server.vercel.app/cars', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json',
@@ -58,6 +59,8 @@ const AddProduct = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            reset();
+            toast.success('Product successfully added');
         })
         
         console.log(car);

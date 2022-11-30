@@ -9,7 +9,7 @@ const MyWishlist = () => {
     const {data : wishLists = [], refetch} = useQuery({
         queryKey: [],
         queryFn: async() => {
-            const res = await fetch(`http://localhost:5000/wishlist?email=${user?.email}`);
+            const res = await fetch(`https://swapcars-assignment12-server.vercel.app/wishlist?email=${user?.email}`);
             const data = res.json();
             console.log(data);
             return data;
@@ -18,7 +18,7 @@ const MyWishlist = () => {
 
      // delete buyer
      const handleDeleteWishlist = id => {
-        fetch(`http://localhost:5000/wishlist/${id}`, {
+        fetch(`https://swapcars-assignment12-server.vercel.app/wishlist/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

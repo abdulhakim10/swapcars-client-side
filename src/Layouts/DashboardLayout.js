@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
 import useSeller from '../hooks/useSeller';
-import useTaker from '../hooks/useTaker';
+// import useTaker from '../hooks/useTaker';
 import Header from '../pages/shared/Navbar/Header';
 
 
@@ -11,7 +11,7 @@ const DashboardLayout = () => {
   const {user} = useContext(AuthContext);
   const [isAdmin] = useAdmin(user.email);
   const [isSeller] = useSeller(user.email);
-  const [isTaker] = useTaker(user?.email);
+  // const [isTaker] = useTaker(user?.email);
     return (
         <div>
             <Header></Header>
@@ -26,10 +26,9 @@ const DashboardLayout = () => {
     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
       
      
-     {isTaker &&  <>
-     <li ><Link to='/dashboard/mybooking'>My Orders</Link></li>
+     
+     <li ><Link to='/dashboard/mybooking'>My Bookings</Link></li>
      <li ><Link to='/dashboard/wishlists'>My Wishlists</Link></li>
-     </>}
     
 
       {
@@ -42,7 +41,7 @@ const DashboardLayout = () => {
 
       {isAdmin &&
         <>
-        <li><Link to='/dashboard/allusers'>All Users</Link></li>
+        {/* <li><Link to='/dashboard/allusers'>All Users</Link></li> */}
       <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
       <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
       </>}
