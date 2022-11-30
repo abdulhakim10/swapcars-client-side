@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const BuyModal = ({modalInfo}) => {
@@ -37,6 +38,7 @@ const BuyModal = ({modalInfo}) => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            toast.success('Booking successful')
             
         })
         form.reset();
