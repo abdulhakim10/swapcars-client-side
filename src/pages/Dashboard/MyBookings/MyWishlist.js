@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import { ImBin } from 'react-icons/im';
 
 const MyWishlist = () => {
     const {user} = useContext(AuthContext);
@@ -56,7 +57,7 @@ const MyWishlist = () => {
                             <td>{wList.title}</td>
                             <td>{wList.price}</td>
                             <td>{wList.location}</td>
-                            <td><button onClick={() => handleDeleteWishlist(wList._id)} className='btn btn-error btn-xs'>Delete</button></td>
+                            <td><ImBin onClick={() => handleDeleteWishlist(wList._id)} className='text-2xl text-red-600'/></td>
                         </tr>)
                     }
                 </tbody>

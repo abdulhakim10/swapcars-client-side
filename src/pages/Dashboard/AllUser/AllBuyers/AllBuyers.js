@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import { ImBin } from 'react-icons/im';
+
 
 const AllBuyers = () => {
 
@@ -95,12 +97,11 @@ const AllBuyers = () => {
                 <td>
                   <span className="badge badge-ghost font-semibold badge-lg">{buyer.type}</span>
                 </td>
-                <th>
+                <td>
                   {buyer.role !== 'admin' && <button onClick={() => handleMakeAdmin(buyer._id)} className="btn btn-success btn-xs">Make Admin</button> }
-                </th>
-                <th>
-                  <button onClick={() => handleDeleteBuyer(buyer._id)} className="btn btn-error btn-xs">Delete</button>
-                </th>
+                </td>
+                
+                <td><ImBin onClick={() => handleDeleteBuyer(buyer._id)} className='text-2xl text-red-600'/></td>
               </tr>)
             }
           </tbody>

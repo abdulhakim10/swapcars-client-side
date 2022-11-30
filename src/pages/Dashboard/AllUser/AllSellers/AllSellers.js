@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import { ImBin } from 'react-icons/im';
+
 
 const AllSellers = () => {
 
@@ -120,12 +122,11 @@ const AllSellers = () => {
                   {seller.status !== 'verified' ?
                     <button onClick={() => handleVerifySeller(seller.email)} className="btn btn-success btn-xs">Verify</button>
                     :
-                    <p className='badge badge-success'>Verified</p>
+                    <p className='badge badge-ghost text-green-500'>Verified</p>
                   }
                 </td>
-                <td>
-                  <button onClick={() => handleDeleteSeller(seller)} className="btn btn-error btn-xs">Delete</button>
-                </td>
+                
+                <td><ImBin onClick={() => handleDeleteSeller(seller)} className='text-2xl text-red-600'/></td>
               </tr>)
             }
           </tbody>

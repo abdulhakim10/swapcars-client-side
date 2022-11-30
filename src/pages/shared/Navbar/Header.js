@@ -1,32 +1,41 @@
-import { Avatar, Button, Dropdown, Navbar, ToggleSwitch } from 'flowbite-react';
+import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     logOut()
-      .then(() => { })
+      .then(() => { 
+        navigate('/');
+      })
       .catch(err => console.error(err))
+
   }
 
   const menuItems = <>
     <li className='text-lg rounded-md hover:text-green-600 hover:bg-gray-200 px-3 py-1'><Link to='/'> Home</Link></li>
-    {user?.uid && <li className='text-lg rounded-md hover:text-green-600 hover:bg-gray-200 px-3 py-1'><Link to='/dashboard'>Dashboard</Link></li>}
+    {/* {user?.uid && <li className='text-lg rounded-md hover:text-green-600 hover:bg-gray-200 px-3 py-1'><Link to='/dashboard'>Dashboard</Link></li>} */}
     <li className='text-lg rounded-md hover:text-green-600 hover:bg-gray-200 px-3 py-1'><Link to='/blog'>Blog</Link></li>
     {/* <li className='text-lg rounded-md hover:text-green-600 hover:bg-gray-200 px-3 py-1'><Link to='/addservice'>Add Service</Link></li> */}
   </>
   return (
-    <div className='border shadow p-1 rounded-lg'>
+    <div className='border-2  m-1 border-green-900 rounded-lg'>
       <Navbar
-        className='bg-gray-100'
+        className='bg-purple-100 p-2'
         fluid={true}
         rounded={true}
       >
         <Navbar.Brand>
+        <img
+      src="https://previews.123rf.com/images/aslantopcu/aslantopcu1312/aslantopcu131200151/24894443-green-car-logo.jpg"
+      className="mr-3 h-6 sm:h-12"
+      alt=''
+    />
 
           <span className="self-center whitespace-nowrap text-green-900 text-4xl font-semibold dark:text-white">
             Swapcars

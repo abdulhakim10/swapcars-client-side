@@ -56,10 +56,10 @@ const router = createBrowserRouter([
                 path: '/dashboard/wishlists',
                 element: <MyWishlist></MyWishlist>
             },
-            {
-                path: '/dashboard/allusers',
-                element: <AllUser></AllUser>
-            },
+            // {
+            //     path: '/dashboard/allusers',
+            //     element: <AllUser></AllUser>
+            // },
             {
                 path: '/dashboard/allsellers',
                 element: <AllSellers></AllSellers>

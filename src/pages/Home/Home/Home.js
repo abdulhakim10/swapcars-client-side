@@ -9,13 +9,13 @@ const Home = () => {
                 <div className="flex flex-col justify-center">
 
                     <div className="flex flex-col lg:flex-row max-w-7xl justify-center items-center p-2 space-y-3 w-full">
-                        <div className="flex flex-col md:items-start items-center justify-between  space-y-3 px-8">
-                            <div className="text-5xl md:text-7xl  ">
+                        <div className="flex flex-col gap-1 md:items-start items-center justify-between  space-y-3 px-8">
+                            <div className="text-5xl md:text-7xl  text-green-900">
                                 Swapcars </div>
-                            <div className="text-lg uppercase md:text-3xl   ">
-                                Interactive Components</div>
-                            <div className="text-xl md:text-3xl   ">
-                                @tailblocks.org</div>
+                            <div className=" uppercase md:ml-6 md:text-xl  text-green-900 ">
+                            Don’t dream it. Drive it!</div>
+                            <div className="text-lg ml-8">
+                                @swapcars.org</div>
                         </div>
                         <div className="flex space-x-2 md:space-x-6 md:m-4">
 

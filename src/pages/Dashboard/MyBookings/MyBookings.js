@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
-import { IoTrashBin } from 'react-icons/fa';
+import { ImBin } from 'react-icons/im';
 
 const MyBookings = () => {
     const {user} = useContext(AuthContext);
@@ -85,7 +85,7 @@ const MyBookings = () => {
                                     >Paid</span>
                                 }
                             </td>
-                            <td><button onClick={() => handleDeleteBooking(booking._id)} className='btn btn-error btn-xs'>Delete</button></td>
+                            <td><ImBin onClick={() => handleDeleteBooking(booking._id)} className='text-2xl text-red-600'/></td>
                         </tr>)
                     }
                 </tbody>
