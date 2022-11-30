@@ -1,16 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
+import Blog from "../../pages/Blog/Blog";
 import AddProduct from "../../pages/Dashboard/AddProduct/AddProduct";
 import MyProducts from "../../pages/Dashboard/AddProduct/MyProducts";
 import AllBuyers from "../../pages/Dashboard/AllUser/AllBuyers/AllBuyers";
 import AllSellers from "../../pages/Dashboard/AllUser/AllSellers/AllSellers";
-import AllUser from "../../pages/Dashboard/AllUser/AllUser";
+
 import Dashboard from "../../pages/Dashboard/Dashboard";
 import MyBookings from "../../pages/Dashboard/MyBookings/MyBookings";
 import MyWishlist from "../../pages/Dashboard/MyBookings/MyWishlist";
 
 import Category from "../../pages/Home/Category/Category";
+import ErrorPage from "../../pages/Home/Category/ErrorPage/ErrorPage";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login/Login";
 import SignUp from "../../pages/Login/SignUp/SignUp";
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             },
         ]
     },
@@ -77,6 +83,10 @@ const router = createBrowserRouter([
                 element: <AddProduct></AddProduct>
             },
         ]
+    },
+    {
+        path: '*',
+        element: <ErrorPage></ErrorPage>
     }
 ])
 
