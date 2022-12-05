@@ -1,7 +1,6 @@
-import { data } from 'autoprefixer';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
+import { IoMdHeartEmpty} from 'react-icons/io';
 import { MdLocationPin, MdVerifiedUser } from 'react-icons/md';
 import { AuthContext } from '../../../contexts/AuthProvider';
 

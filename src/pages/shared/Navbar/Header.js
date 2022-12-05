@@ -30,14 +30,17 @@ const Header = () => {
         fluid={true}
         rounded={true}
       >
+        <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
         <Navbar.Brand>
         <img
       src="https://previews.123rf.com/images/aslantopcu/aslantopcu1312/aslantopcu131200151/24894443-green-car-logo.jpg"
-      className="mr-3 h-6 sm:h-12"
+      className="mr-3 h-4 sm:h-12"
       alt=''
     />
 
-          <span className="self-center whitespace-nowrap text-green-900 text-4xl font-semibold dark:text-white">
+          <span className="self-center whitespace-nowrap text-green-900 md:text-4xl text-lg font-semibold dark:text-white">
             Swapcars
           </span>
         </Navbar.Brand>
@@ -45,9 +48,9 @@ const Header = () => {
 
           {
             !user?.uid ?
-              <button className='mr-4 mt-1 btn btn-outline btn-sm'><Link to='/login'>Login</Link></button>
+              <button className='mr-4 mt-1 btn btn-outline md:btn-sm btn-xs'><Link to='/login'>Login</Link></button>
               :
-              <button onClick={handleLogOut} className='mr-4 mt-1 btn btn-outline btn-sm'>Log Out</button>
+              <button onClick={handleLogOut} className='mr-4 mt-1 btn btn-outline md:btn-sm btn-xs'>Log Out</button>
           }
 
           <Dropdown
