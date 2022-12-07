@@ -10,6 +10,7 @@ import AllSellers from "../../pages/Dashboard/AllUser/AllSellers/AllSellers";
 import Dashboard from "../../pages/Dashboard/Dashboard";
 import MyBookings from "../../pages/Dashboard/MyBookings/MyBookings";
 import MyWishlist from "../../pages/Dashboard/MyBookings/MyWishlist";
+import Payment from "../../pages/Dashboard/Payment/Payment";
 
 import Category from "../../pages/Home/Category/Category";
 import ErrorPage from "../../pages/Home/Category/ErrorPage/ErrorPage";
@@ -82,6 +83,11 @@ const router = createBrowserRouter([
                 path: '/dashboard/addproduct',
                 element: <AddProduct></AddProduct>
             },
+            {
+                path: '/dashboard/payment/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`),
+                element: <Payment></Payment>
+            }
         ]
     },
     {
