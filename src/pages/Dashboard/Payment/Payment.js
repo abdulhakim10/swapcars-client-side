@@ -11,9 +11,9 @@ console.log(stripePromise);
 const Payment = () => {
     const booking = useLoaderData();
     return (
-        <div>
-            <div>
-                <h2 className="text-xl">Please pay <strong>{booking.price}</strong> for <strong>{booking.item}</strong></h2>
+        <div className='md:w-3/5 w-11/12 mt-12 mx-auto p-7 border-2 border-green-900 rounded-lg'>
+            <div >
+                <h2 className="md:text-xl text-md text-center">Please pay <strong>{booking.price}</strong> for <strong>{booking.item}</strong></h2>
             </div>
             <div>
                 <Elements stripe={stripePromise} >

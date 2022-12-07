@@ -11,7 +11,7 @@ const CheckoutForm = ({ booking }) => {
     const elements = useElements();
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://swapcars-assignment12-server-abdulhakim10.vercel.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json',
@@ -90,7 +90,7 @@ const CheckoutForm = ({ booking }) => {
             email,
             bookingId: _id,
           };
-          fetch("http://localhost:5000/payments", {
+          fetch("https://swapcars-assignment12-server-abdulhakim10.vercel.app/payments", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -111,8 +111,9 @@ const CheckoutForm = ({ booking }) => {
       };
       return (
         <>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className='border w-full mx-auto my-6 p-2 bg-white rounded-lg'>
             <CardElement
+            
               options={{
                 style: {
                   base: {
@@ -129,7 +130,7 @@ const CheckoutForm = ({ booking }) => {
               }}
             />
             <button
-              className="btn btn-sm btn-primary mt-6"
+              className="btn btn-sm btn-outline mx-auto w-full mt-6"
               type="submit"
             //   disabled={!stripe || !clientSecret || processing}
             >
