@@ -46,6 +46,9 @@ const Login = () => {
     const googleLogin = () => {
         googleSignIn()
             .then(result => {
+                const email = result.user.email;
+                // console.log(result.user.email)
+                setLoginUserEmail(email);
                 toast.success('Successfully logged in');
 
                 const data = result.user
@@ -66,8 +69,8 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        const email = user.email;
-                        setLoginUserEmail(email);
+                        // const email = user.email;
+                        // setLoginUserEmail(email);
                     })
             })
 

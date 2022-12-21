@@ -88,6 +88,8 @@ const SignUp = () => {
     googleSignIn()
     
     .then(result => {
+        const email = result.user.email;
+        setSignupUserEmail(email);
         toast.success('Successfully logged in');
         const data = result.user
         // send to db
